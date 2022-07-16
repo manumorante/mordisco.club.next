@@ -1,0 +1,53 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html,
+  body {
+    @apply h-full bg-slate-800 text-slate-400;
+  }
+
+  #__next {
+    @apply relative min-h-full;
+  }
+}
+
+@layer components {
+  .mm-masonry {
+    /* Disable grid on mobile */
+    --_display: block;
+  }
+
+  @media (min-width: 580px) {
+    /* Active large mobile+ */
+    .mm-masonry {
+      --_display: grid;
+      --_gap: 16;
+      --_col-width: 258;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .mm-masonry {
+      --_gap: 16;
+      --_col-width: 229;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .mm-masonry {
+      --_gap: 24;
+      --_col-width: 300;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .mm-masonry {
+      --_gap: 24;
+      --_col-width: 394;
+    }
+  }
+
+  @import '../node_modules/mm-masonry/css/mm-masonry.css';
+}
