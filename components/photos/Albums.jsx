@@ -4,7 +4,7 @@ const Albums = ({ albums }) => {
   if (!albums) return null
 
   return (
-    <div className='Albums flex gap-4 flex-wrap'>
+    <div className='Albums flex gap-6 flex-wrap'>
       {albums.map((album) => (
         <AlbumCard key={album.id} album={album} />
       ))}

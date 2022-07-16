@@ -19,6 +19,7 @@
   .mm-masonry {
     /* Disable grid on mobile */
     --_display: block;
+    --_gap: 24;
   }
 
   @media (min-width: 580px) {

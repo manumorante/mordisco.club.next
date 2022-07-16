@@ -4,7 +4,14 @@ import Spinner from '../../components/app/Spinner'
 import Album from '../../components/photos/Album'
 
 export async function getStaticPaths() {
-  return { paths: ['/albums/0', '/albums/1'], fallback: true }
+  const { albums } = data
+
+  const paths = []
+  albums.forEach((album) => {
+    paths.push(`/albums/${album.id}`)
+  })
+
+  return { paths: paths, fallback: true }
 }
 
 export async function getStaticProps({ params }) {
