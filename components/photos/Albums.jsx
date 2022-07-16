@@ -1,6 +1,7 @@
 import AlbumCard from './AlbumCard'
+import QuoteCard from './QuoteCard'
 
-const Albums = ({ albums }) => {
+const Albums = ({ albums, quotes }) => {
   if (!albums) return null
 
   return (
@@ -8,6 +9,7 @@ const Albums = ({ albums }) => {
       {albums.map((album) => (
         <AlbumCard key={album.id} album={album} />
       ))}
+      <QuoteCard quote={quotes[0]} />
     </div>
   )
 }
