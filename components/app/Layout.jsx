@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
     <>
       <Meta />
       <Header />
-      <div className='max-w-7xl px-6 mx-auto'>{children}</div>
+      <div className='max-w-7xl my-60 px-6 mx-auto'>{children}</div>
     </>
   )
 }

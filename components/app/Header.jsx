@@ -9,14 +9,14 @@ export default function Header() {
 
   const className = classNames(
     'Header',
-    'sticky top-0 z-10',
+    'fixed top-0 right-0 left-0 z-10',
     'transition-all duration-500 ease-in-out',
     'bg-gradient-to-b from-black',
     'flex flex-col gap-4 items-center justify-center',
     {
-      'backdrop-blur-md': isSticky,
+      'backdrop-blur-sm': isSticky,
       'py-24': !isSticky,
-      'py-8': isSticky,
+      'py-12': isSticky,
     }
   )
 
