@@ -1,15 +1,29 @@
-import data from '../../../data/albums.json'
+import fs from 'fs'
+import path from 'path'
 
-export default function handler(req, res) {
-  const id = parseInt(req.query.id)
-  const albums = [...data.albums]
+// eslint-disable-next-line import/no-anonymous-default-export
+export default (req, res) => {
+  const { id } = req.query
+  const dir = path.resolve('./public', 'albums')
+  const files = fs.readdirSync(dir)
+  const dirs = files.filter((file) => fs.statSync(path.join(dir, file)).isDirectory())
+  const album = dirs[parseInt(id)]
+  const albumFiles = fs.readdirSync(path.join(dir, album))
+  const photos = albumFiles.filter((file) => file.endsWith('.jpg'))
+  const photosData = photos.map((photo) => {
+    return {
+      name: photo,
+      path: `/albums/${album}/${photo}`,
+    }
+  })
 
-  const filtered = albums.filter((p) => parseInt(p.id) === id)
-
-  // User with id exists
-  if (filtered.length > 0) {
-    res.status(200).json(filtered[0])
-  } else {
-    res.status(404).json({ message: `Album with id: ${id} not found.` })
+  const albumData = {
+    id: id,
+    name: album,
+    total: photos.length,
+    photos: photosData,
   }
+
+  res.statusCode = 200
+  res.json(albumData)
 }

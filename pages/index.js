@@ -1,13 +1,10 @@
+import Link from 'next/link'
 import Layout from '../components/Layout'
 
 export default function Home() {
   return (
-    <>
-      <Layout>
-        <div className='Home'>
-          <h1>Home</h1>
-        </div>
-      </Layout>
-    </>
+    <Layout>
+      <Link href='/albums'>Ir a los álbumes</Link>
+    </Layout>
   )
 }
