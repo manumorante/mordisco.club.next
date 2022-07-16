@@ -1,12 +1,12 @@
-import Photo from './Photo'
+import AlbumItem from './AlbumItem'
 
-const Album = ({ album, quotes }) => {
-  if (!album) return null
+const Album = ({ items }) => {
+  if (!items) return null
 
   return (
     <div className='mm-masonry'>
-      {album.photos.map((photo) => {
-        return <Photo photo={photo} key={photo.id} />
+      {items.map((item) => {
+        return <AlbumItem item={item} key={item.id} />
       })}
     </div>
   )

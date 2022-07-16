@@ -15,22 +15,37 @@ export async function getStaticPaths() {
   return { paths: paths, fallback: true }
 }
 
+export function mixItems(base, added, number) {
+  const mixed = []
+  let addedCount = 0
+  base.forEach((item, i) => {
+    mixed.push(item)
+
+    if (i % number === 0) {
+      mixed.push(added[addedCount])
+      addedCount++
+    }
+  })
+  return mixed
+}
+
 export async function getStaticProps({ params }) {
   const { id } = params
   const { albums } = ALBUMS
   const { quotes } = QUOTES
   const album = albums[id]
+  const items = mixItems(album.photos, quotes, 12)
 
-  return { props: { album, quotes } }
+  return { props: { items } }
 }
 
 export default function AlbumPage(props) {
-  const { album, quotes } = props
+  const { items } = props
 
   return (
     <Layout>
-      {!album && <Spinner />}
-      {album && quotes && <Album album={album} quotes={quotes} />}
+      {!items && <Spinner />}
+      {items && <Album items={items} />}
     </Layout>
   )
 }
