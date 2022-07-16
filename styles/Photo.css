@@ -1,0 +1,5 @@
+.Photo {
+  @apply bg-neutral-900/50
+  sm:transition-transform sm:duration-300 sm:ease-in-out
+  sm:hover:-translate-y-1;
+}

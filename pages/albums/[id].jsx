@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import Layout from '../../components/Layout'
-import Album from '../../components/Album'
+import Layout from '../../components/app/Layout'
+import Spinner from '../../components/app/Spinner'
+import Album from '../../components/photos/Album'
 
 export default function AlbumPage() {
   const router = useRouter()
@@ -11,7 +12,7 @@ export default function AlbumPage() {
 
   return (
     <Layout>
-      {!album && `Loading album id: ${id}`}
+      {!album && <Spinner />}
       {album && <Album album={album} />}
     </Layout>
   )

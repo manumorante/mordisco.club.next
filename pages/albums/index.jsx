@@ -1,6 +1,7 @@
 import useSWR from 'swr'
-import Layout from '../../components/Layout'
-import Albums from '../../components/Albums'
+import Layout from '../../components/app/Layout'
+import Albums from '../../components/photos/Albums'
+import Spinner from '../../components/app/Spinner'
 
 export default function AlbumsPage() {
   const fetcher = (url) => fetch(url).then((res) => res.json())
@@ -8,7 +9,7 @@ export default function AlbumsPage() {
 
   return (
     <Layout>
-      {!albums && 'Loading albums...'}
+      {!albums && <Spinner />}
       {albums && <Albums albums={albums} />}
     </Layout>
   )

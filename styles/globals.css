@@ -3,9 +3,11 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+  @import './Spinner.css';
+
   html,
   body {
-    @apply h-full bg-slate-800 text-slate-400;
+    @apply h-full bg-black text-neutral-100;
   }
 
   #__next {
@@ -50,4 +52,5 @@
   }
 
   @import '../node_modules/mm-masonry/css/mm-masonry.css';
+  @import './Photo.css';
 }
