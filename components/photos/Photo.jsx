@@ -17,10 +17,7 @@ function Photo({ photo }) {
         height={photo.height}
         loading='lazy'
         alt=''
-        onLoadingComplete={() => {
-          setLoading(false)
-          console.log('loaded', photo.small)
-        }}
+        onLoadingComplete={() => setLoading(false)}
       />
 
       {loading && <Spinner />}

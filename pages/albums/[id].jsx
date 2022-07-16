@@ -1,14 +1,21 @@
-import { useRouter } from 'next/router'
-import useSWR from 'swr'
+import { fetchAlbum } from '../../lib/fecher'
 import Layout from '../../components/app/Layout'
 import Spinner from '../../components/app/Spinner'
 import Album from '../../components/photos/Album'
 
-export default function AlbumPage() {
-  const router = useRouter()
-  const { id } = router.query
-  const fetcher = (url) => fetch(url).then((res) => res.json())
-  const { data: album } = useSWR(`/api/albums/${id}`, fetcher)
+export async function getStaticPaths() {
+  return { paths: [], fallback: true }
+}
+
+export async function getStaticProps({ params }) {
+  const { id } = params
+  const album = await fetchAlbum(id)
+
+  return { props: { album } }
+}
+
+export default function AlbumPage(props) {
+  const { album } = props
 
   return (
     <Layout>

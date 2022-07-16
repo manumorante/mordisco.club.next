@@ -1,11 +1,16 @@
-import useSWR from 'swr'
+import { fetchAlbums } from '../../lib/fecher'
 import Layout from '../../components/app/Layout'
 import Albums from '../../components/photos/Albums'
 import Spinner from '../../components/app/Spinner'
 
-export default function AlbumsPage() {
-  const fetcher = (url) => fetch(url).then((res) => res.json())
-  const { data: albums } = useSWR('/api/albums', fetcher)
+export async function getStaticProps() {
+  const albums = await fetchAlbums()
+
+  return { props: { albums } }
+}
+
+export default function AlbumsPage(props) {
+  const { albums } = props
 
   return (
     <Layout>
