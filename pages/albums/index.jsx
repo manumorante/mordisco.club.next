@@ -1,12 +1,10 @@
-import data from '../../data/albums.json'
-// import { fetchAlbums } from '../../lib/fecher'
+import data from '../../public/albums/albums.json'
 import Layout from '../../components/app/Layout'
 import Albums from '../../components/photos/Albums'
 import Spinner from '../../components/app/Spinner'
 
 export async function getStaticProps() {
   const { albums } = data
-  // const albums = await fetchAlbums()
 
   return { props: { albums } }
 }
