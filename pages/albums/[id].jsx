@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import Layout from '../../components/Layout'
+import Album from '../../components/Album'
 
 export default function AlbumPage() {
   const router = useRouter()
@@ -11,15 +12,7 @@ export default function AlbumPage() {
   return (
     <Layout>
       {!album && `Loading album id: ${id}`}
-      {album && (
-        <div className='mm-masonry'>
-          {album.photos.map((photo) => (
-            <div key={photo.name} className='mm-masonry__item'>
-              <img className='mm-masonry__img' src={photo.path} alt='' />
-            </div>
-          ))}
-        </div>
-      )}
+      {album && <Album album={album} />}
     </Layout>
   )
 }
