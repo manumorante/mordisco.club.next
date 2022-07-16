@@ -1,7 +1,8 @@
-import { albums } from '../../../data/albums.json'
+import data from '../../../data/albums.json'
 
 export default function handler(req, res) {
   const id = parseInt(req.query.id)
+  const albums = [...data.albums]
 
   const filtered = albums.filter((p) => parseInt(p.id) === id)
 
